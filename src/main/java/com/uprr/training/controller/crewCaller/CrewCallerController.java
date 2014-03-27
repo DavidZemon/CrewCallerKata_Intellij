@@ -40,10 +40,6 @@ public class CrewCallerController {
     public
     @ResponseBody
     List<CrewMember> getAllCrew() {
-        // TODO: Why is Spring not doing this for me?
-        if (null == this.crewDao)
-            this.crewDao = new CrewDaoImpl();
-
         return crewDao.getAllCrew();
     }
 }

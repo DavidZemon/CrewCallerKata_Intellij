@@ -1,7 +1,9 @@
 package com.uprr.training.controller.crewCaller;
 
 import com.uprr.training.pojos.CrewMember;
+import com.uprr.training.shared.utils.spring.mvc.ErrorMessage;
 import com.uprr.training.temp.CrewDao;
+import com.uprr.training.temp.CrewDaoImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,10 @@ public class CrewCallerController {
     public
     @ResponseBody
     List<CrewMember> getAllCrew() {
+        // TODO: Why is Spring not doing this for me?
+        if (null == this.crewDao)
+            this.crewDao = new CrewDaoImpl();
+
         return crewDao.getAllCrew();
     }
 }

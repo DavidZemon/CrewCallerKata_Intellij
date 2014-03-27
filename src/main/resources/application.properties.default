@@ -1,0 +1,34 @@
+
+# JMS configuration settings
+tng.jms.initialContextFactory=com.tibco.tibjms.naming.TibjmsInitialContextFactory
+tng.jms.url=
+
+# JMS properties for this service
+tng.jms.userId=
+tng.jms.password=
+tng.jms.connectionFactoryName=
+tng.jms.requestorId=cn=dtng999,ou=uprr,o=up,udi=${app.name}
+tng.jms.clientId=tng-${app.name}-${app.hostname}-${uprr.implementation.environment}-${app.initTimestamp}
+
+# These two variables are OVERRIDDEN by values found in "target/generated-resources/generated-application.properties". Do not set these values here; they won't be used!
+tng.jms.serviceQueue=
+tng.jms.serviceName=
+
+tng.jms.numberOfListeners=5
+tng.jms.maxNumberOfListeners=5
+
+# UCP Database Connection Pool Settings for this service
+tng.ucp.ONS-configuration=
+tng.ucp.create-XA-datasource=false 
+tng.ucp.url=
+tng.ucp.user=
+tng.ucp.password=
+tng.ucp.validate-connection-on-borrow=true
+tng.ucp.connection-wait-timeout=0
+tng.ucp.inactive-connection-timeout=86400
+tng.ucp.initial-pool-size=10
+tng.ucp.min-pool-size=1  
+tng.ucp.max-pool-size=30
+tng.ucp.max-statements=10
+tng.ucp.login-timeout=30
+tng.ucp.fast-connection-failover-enabled=true

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:context="http://www.springframework.org/schema/context" 
+	   xmlns:c="http://www.springframework.org/schema/c" 
+	   xmlns:p="http://www.springframework.org/schema/p" 
+	   xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	   xmlns:util="http://www.springframework.org/schema/util" 
+	   xmlns:beans="http://www.springframework.org/schema/beans"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	
+	<!--  the Main configuration file for this web application -->
+    
+    <!-- Dependency injected controllers -->
+	<beans:import resource="classpath:controller/master-controller-context.xml" />
+	
+	<!-- Properties file loader -->
+	<util:map id="defaultRuntimeSystemProperties" map-class="java.util.Properties"> 
+		<entry key="app.name" value="springmvc-sample-application-1_0" />  
+		<entry key="app.hostname">
+			<bean
+				class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+				<property name="targetObject">
+					<bean
+						class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+						<property name="staticMethod" value="java.net.InetAddress.getLocalHost" />
+					</bean>
+				</property>
+				<property name="targetMethod" value="getHostName" />
+			</bean>
+		</entry>
+		<entry key="app.initTimestamp">
+			<bean
+				class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+				<property name="targetObject">
+					<bean
+						class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+						<property name="staticMethod"
+							value="com.uprr.netcontrol.shared.components.datetime.NCDateTimeFactory.createTimestamp" />
+					</bean>
+				</property>
+				<property name="targetMethod" value="getServiceUTCString" />
+			</bean>
+		</entry>
+	</util:map>
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="localOverride" value="false" />
+		<property name="locations">
+			<list>
+				<value>classpath*:*.properties.default</value>
+				<value>classpath*:${uprr.implementation.environment}.properties</value>
+				<value>classpath*:*.properties.local</value>
+			</list>
+		</property>
+		<property name="properties" ref="defaultRuntimeSystemProperties" />
+	</bean>
+	
+    <!-- SampleGlobalExceptionHandler : translates validation errors into the proper response type 
+    	 This class will intercept certain exceptions and format them in a JSON form.  
+    -->
+    <bean id="globalExceptionHandler" class="com.uprr.training.shared.utils.spring.mvc.SampleGlobalExceptionHandler"/>
+	
+    <!-- Allows the NCDateTime translations in JSON Occur Properly -->
+    <bean id="jacksonObjectMapper" class="com.uprr.training.jackson.SpringMVCJacksonObjectMapper"/>
+
+	<!--  declares the class for performing JSON conversions -->
+	<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	   <property name="objectMapper" ref="jacksonObjectMapper"/>
+	   <property name="supportedMediaTypes" value="application/json"/>
+	</bean>
+
+    <!--  JSON Configuration --> 
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="false" />
+        <property name="favorParameter" value="false" />
+        <property name="ignoreAcceptHeader" value="false" />
+        <property name="mediaTypes">
+            <value>
+                json=application/json
+            </value>
+        </property>
+    </bean>
+    
+     <!-- Prevents IE and other browsers from caching the data call results. 
+          This will globally occur for all requests -->
+     <mvc:interceptors>
+        <bean id="webContentInterceptor"
+            class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+            <property name="cacheSeconds" value="0" />
+            <property name="useExpiresHeader" value="true" />
+            <property name="useCacheControlHeader" value="true" />
+            <property name="useCacheControlNoStore" value="true" />
+        </bean>
+    </mvc:interceptors>
+    
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<!--  Probably requires better documentation -->
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" >
+		<!-- Enables the @ActiveUser tag in Controllers -->
+	    <mvc:argument-resolvers>
+           <bean class="com.uprr.ui.shared.user.spring.mvc.ActiveUserHandlerMethodArgumentResolver"/>         
+      </mvc:argument-resolvers>
+      <mvc:message-converters>
+	        <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+        	<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+        	<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	            <property name="objectMapper" ref="jacksonObjectMapper" />
+	        </bean>
+	   </mvc:message-converters>
+   </mvc:annotation-driven>
+</beans>

@@ -225,49 +225,7 @@
                                     <maxIdleTime>60000</maxIdleTime>
                                 </connector>
                             </connectors>
-                            <!-- scanIntervalSeconds>1</scanIntervalSeconds -->
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>jboss-ews</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.tomcat.maven</groupId>
-                        <artifactId>tomcat7-maven-plugin</artifactId>
-                        <version>2.1</version>
-                        <configuration>
-                            <url>${jboss-dev-url-1}</url>
-                            <update>true</update>
-                            <path>/${app-tla}/${project.artifactId}</path>
-                            <warFile>target/${war-file-name}.war</warFile>
-                            <username>system</username>
-                            <password>tmc4up</password>
-                            <mode>war</mode>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>jboss-ews2</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.tomcat.maven</groupId>
-                        <artifactId>tomcat7-maven-plugin</artifactId>
-                        <version>2.1</version>
-                        <configuration>
-                            <url>${jboss-dev-url-2}</url>
-                            <update>true</update>
-                            <path>/${app-tla}/${project.artifactId}</path>
-                            <warFile>target/${war-file-name}.war</warFile>
-                            <username>system</username>
-                            <password>tmc4up</password>
-                            <mode>war</mode>
+                            <scanIntervalSeconds>1</scanIntervalSeconds>
                         </configuration>
                     </plugin>
                 </plugins>

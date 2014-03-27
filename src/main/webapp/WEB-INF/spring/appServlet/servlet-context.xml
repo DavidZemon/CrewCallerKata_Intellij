@@ -49,7 +49,7 @@
         <property name="localOverride" value="false"/>
         <property name="locations">
             <list>
-                <value>classpath*:*.properties.default</value>
+                <value>classpath*:*.properties</value>
                 <value>classpath*:${uprr.implementation.environment}.properties</value>
                 <value>classpath*:*.properties.local</value>
             </list>

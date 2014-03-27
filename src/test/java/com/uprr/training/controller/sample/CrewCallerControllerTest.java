@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-public class SampleApplicationControllerTest extends AbstractContextControllerTests {
+public class CrewCallerControllerTest extends AbstractContextControllerTests {
 
 
     private static final String ANOTHER_REQUEST =

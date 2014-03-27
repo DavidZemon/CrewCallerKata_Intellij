@@ -14,7 +14,7 @@
     <bean id="sampleApplicationAction" class="com.uprr.training.action.sample.SampleApplicationActionImpl">
     </bean>
 
-    <bean id="sampleApplicationController" class="com.uprr.training.controller.sample.SampleApplicationController">
+    <bean id="sampleApplicationController" class="com.uprr.training.controller.sample.CrewCallerController">
         <property name="sampleAction" ref="sampleApplicationAction"/>
     </bean>
 

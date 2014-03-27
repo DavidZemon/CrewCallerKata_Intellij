@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<!-- STATIC CONTENT BELONGS ON APACHE, NOT IN THIS WAR. This file is only for testing the WAR file deployment on Tomcat/JBoss. -->
-<html>
+<html ng-app>
     <head>
+        <title>Crew Caller</title>
     </head>
     <body>
-        Hello World! <br>
-        This page exists solely to confirm that crewCaller is up and running
+        <h1>Crew Caller</h1>
+
+        <p>This is the crew caller!</p>
+
+        <div>
+            <label>Input some sample text here: <input type="text" ng-model="myApplication"></label>
+            <em>{{ myApplication }}</em>
+        </div>
     </body>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 </html>

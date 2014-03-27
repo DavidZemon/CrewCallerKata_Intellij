@@ -8,6 +8,6 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <beans:import resource="classpath:/controller/sample/sample-application-context.xml"/>
+    <beans:import resource="classpath:/controller/crewCaller/CrewCaller-context.xml"/>
     <!-- other controller xml configs may be added here -->
 </beans>

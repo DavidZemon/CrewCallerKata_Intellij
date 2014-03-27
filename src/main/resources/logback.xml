@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- PLACEHOLDER For Logback configuration -->
 <configuration>
-	<contextName>crewCaller</contextName>
+    <contextName>crewCaller</contextName>
 
-	<jmxConfigurator />
+    <jmxConfigurator/>
 
-   	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${jbs.logdir}/apps/tng.crewCaller.webapp.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
             <fileNamePattern>${jbs.logdir}/apps/tng.crewCaller.webapp-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-			<MaxHistory>7</MaxHistory>
-			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+            <MaxHistory>7</MaxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
             <timeBasedFileNamingAndTriggeringPolicy
-             class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>5MB</maxFileSize>
-				<MaxHistory>3</MaxHistory>
+                <MaxHistory>3</MaxHistory>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder class="com.uprr.app.uit.common.ui.logging.CustomPatternLayoutEncoder">
@@ -23,17 +23,17 @@
         </encoder>
     </appender>
 
-   	<appender name="thirdPartyFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="thirdPartyFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${jbs.logdir}apps/tng.crewCaller-other.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
             <fileNamePattern>${jbs.logdir}/apps/standard-work-other-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-			<MaxHistory>7</MaxHistory>
-			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+            <MaxHistory>7</MaxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
             <timeBasedFileNamingAndTriggeringPolicy
-             class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>5MB</maxFileSize>
-				<MaxHistory>3</MaxHistory>
+                <MaxHistory>3</MaxHistory>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
     </appender>
@@ -65,9 +65,9 @@
         <appender-ref ref="file"/>
     </logger>
 
-	<root>
-		<level value="info"/>
-		<appender-ref ref="console"/>
-		<appender-ref ref="file"/>
-	</root>
+    <root>
+        <level value="info"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
 </configuration>

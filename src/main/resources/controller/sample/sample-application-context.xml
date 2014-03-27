@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This is a specific application controller context.  
+<!-- This is a specific application controller context.
      Each distinct controller should have its own context xml
-     and add the to the master-controller-context.  
-     In addition, this controller can be overridden for testing 
-     by copying the this file into the src/test/resources location 
+     and add the to the master-controller-context.
+     In addition, this controller can be overridden for testing
+     by copying the this file into the src/test/resources location
      and changing any injected resources to stubs, as required.
-     Spring will Auto-Detect beans that are controllers based on the @Controller annotation   
-     -->     
-<beans xmlns="http://www.springframework.org/schema/beans" 
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	   xmlns:context="http://www.springframework.org/schema/context" 
-	   xmlns:c="http://www.springframework.org/schema/c" 
-	   xmlns:p="http://www.springframework.org/schema/p" 
-	   xmlns:mvc="http://www.springframework.org/schema/mvc" 
-	   xmlns:util="http://www.springframework.org/schema/util" 
-	   xmlns:beans="http://www.springframework.org/schema/beans"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-	
-	<bean id="sampleApplicationAction" class="com.uprr.training.action.sample.SampleApplicationActionImpl">		
-	</bean>
-	
-	<bean id="sampleApplicationController" class="com.uprr.training.controller.sample.SampleApplicationController">
-		<property name="sampleAction" ref="sampleApplicationAction"/>
-	</bean>
+     Spring will Auto-Detect beans that are controllers based on the @Controller annotation
+     -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="sampleApplicationAction" class="com.uprr.training.action.sample.SampleApplicationActionImpl">
+    </bean>
+
+    <bean id="sampleApplicationController" class="com.uprr.training.controller.sample.SampleApplicationController">
+        <property name="sampleAction" ref="sampleApplicationAction"/>
+    </bean>
 
 </beans>

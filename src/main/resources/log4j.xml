@@ -3,54 +3,54 @@
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-	<appender name="file" class="org.apache.log4j.RollingFileAppender">
-		<param name="File"
-			value="${jbs.logdir}/apps/tng.crewCaller.webapp.log" />
+    <appender name="file" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"
+               value="${jbs.logdir}/apps/tng.crewCaller.webapp.log"/>
 
-		<param name="MaxFileSize" value="50MB" />
-		<param name="MaxBackupIndex" value="10" />
+        <param name="MaxFileSize" value="50MB"/>
+        <param name="MaxBackupIndex" value="10"/>
 
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[%d{ISO8601}] [%c{1}] [%-5p] %m%n" />
-		</layout>
-	</appender>
-	<appender name="thirdPartyFile" class="org.apache.log4j.RollingFileAppender">
-		<param name="File"
-			value="${jbs.logdir}/apps/tng.crewCaller-other.log" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{ISO8601}] [%c{1}] [%-5p] %m%n"/>
+        </layout>
+    </appender>
+    <appender name="thirdPartyFile" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"
+               value="${jbs.logdir}/apps/tng.crewCaller-other.log"/>
 
-		<param name="MaxFileSize" value="50MB" />
-		<param name="MaxBackupIndex" value="10" />
+        <param name="MaxFileSize" value="50MB"/>
+        <param name="MaxBackupIndex" value="10"/>
 
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[%d{ISO8601}] [%c{1}] [%-5p] %m%n" />
-		</layout>
-	</appender>
-	<root>
-		<level value="info" />
-		<appender-ref ref="file" />
-	</root>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{ISO8601}] [%c{1}] [%-5p] %m%n"/>
+        </layout>
+    </appender>
+    <root>
+        <level value="info"/>
+        <appender-ref ref="file"/>
+    </root>
     <logger name="net.sf.ehcache" additivity="false">
-    	<level value="info" />
+        <level value="info"/>
         <appender-ref ref="thirdPartyFile"/>
     </logger>
 
     <logger name="org.apache" additivity="false">
-        <level value="info" />
+        <level value="info"/>
         <appender-ref ref="thirdPartyFile"/>
     </logger>
 
     <logger name="org.springframework" additivity="false">
-        <level value="info" />
+        <level value="info"/>
         <appender-ref ref="thirdPartyFile"/>
     </logger>
 
     <logger name="org.hibernate" additivity="false">
-        <level value="info" />
+        <level value="info"/>
         <appender-ref ref="thirdPartyFile"/>
     </logger>
 
     <logger name="com.uprr" additivity="false">
-        <level value="info" />
+        <level value="info"/>
         <appender-ref ref="file"/>
     </logger>
 </log4j:configuration>

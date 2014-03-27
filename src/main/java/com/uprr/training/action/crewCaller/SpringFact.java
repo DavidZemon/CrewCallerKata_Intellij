@@ -1,4 +1,4 @@
-package com.uprr.training.action.sample;
+package com.uprr.training.action.crewCaller;
 
 /**
  * Another POJO used in the reply.  This on to demonstrate list serialization.

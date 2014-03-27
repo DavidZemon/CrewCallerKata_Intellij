@@ -1,7 +1,0 @@
-# These properties represent your own personal properties
-
-tng.jms.url=tcp://localhost:7222
-
-# JMS properties
-tng.jms.userId=yourUserId
-tng.jms.password=yourPassword

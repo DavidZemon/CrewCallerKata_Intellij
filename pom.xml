@@ -8,13 +8,9 @@
     <artifactId>crewCaller</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>crewCaller</name>
+    <name>Crew Caller</name>
 
     <properties>
-        <jboss-dev-url-1>http://vx9999.uprr.com:10001/manager/text</jboss-dev-url-1>
-        <!-- TODO: SET THIS -->
-        <jboss-dev-url-2>http://vx999a.uprr.com:10001/manager/text</jboss-dev-url-2>
-        <!-- TODO: SET THIS (If required) -->
         <app-tla>tng</app-tla>
         <war-file-name>${app-tla}#${project.artifactId}</war-file-name>
         <commons-lang-version>2.1</commons-lang-version>

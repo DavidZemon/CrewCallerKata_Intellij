@@ -1,20 +1,20 @@
-package com.uprr.training.controller.sample;
+package com.uprr.training.controller.crewCaller;
 
-import com.uprr.training.action.sample.SampleReply;
+import com.uprr.training.pojos.CrewMember;
+import com.uprr.training.temp.CrewDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
-import java.util.Locale;
+import java.util.List;
 
 @Controller
-@RequestMapping("/get/*")   //browser URL http://localhost:8080/tng/crewCaller/secure/jas/sample/*
+@RequestMapping("/get/*")   //browser URL http://localhost:8080/tng/crewCaller/secure/jas/crewCaller/*
 //Note: requests must all begin /secure/jas (defined the in the web.xml <url-pattern>)
 /**
  * This is the main class handling the all JSON requests for this request map URL.
@@ -22,8 +22,10 @@ import java.util.Locale;
  * for any actions supported.
  */
 public class CrewCallerController {
-
     private static final Logger LOG = LoggerFactory.getLogger(CrewCallerController.class);
+
+    @Autowired
+    private CrewDao crewDao;
 
     /**
      * This method handles requests coming to this server for URL's ending
@@ -35,23 +37,7 @@ public class CrewCallerController {
     @RequestMapping(value = "all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public
     @ResponseBody
-    SampleReply sampleRequest() {
-        return null;
+    List<CrewMember> getAllCrew() {
+        return crewDao.getAllCrew();
     }
-
-    /**
-     * This method handles requests coming to this server for URL's ending
-     * /secure/jas/sample/anotherRequest
-     *
-     * @param bean   the POJO populated automatically by Spring from the request parameters
-     * @param locale the user's Locale, as set in the User's browser settings.
-     * @return a POJO that will be mapped to become the response JSON data.
-     */
-    @RequestMapping(value = "anotherRequest", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public
-    @ResponseBody
-    String someOtherNonSecuredRequest(@Valid @RequestBody FormBean bean, Locale locale) {
-        return null;
-    }
-
 }

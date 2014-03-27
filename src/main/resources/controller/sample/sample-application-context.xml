@@ -11,11 +11,6 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="sampleApplicationAction" class="com.uprr.training.action.sample.SampleApplicationActionImpl">
-    </bean>
-
-    <bean id="sampleApplicationController" class="com.uprr.training.controller.sample.CrewCallerController">
-        <property name="sampleAction" ref="sampleApplicationAction"/>
-    </bean>
-
+    <bean id="crewDao" class="com.uprr.training.temp.CrewDaoImpl"/>
+    <bean id="crewCallerController" class="com.uprr.training.controller.crewCaller.CrewCallerController" />
 </beans>

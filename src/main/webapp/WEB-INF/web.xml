@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/j2ee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+         http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
-
     <display-name>crewCaller</display-name>
-
 
     <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
     <context-param>
@@ -33,12 +33,6 @@
 
     <servlet-mapping>
         <servlet-name>springDispatcherServlet</servlet-name>
-        <url-pattern>/jas/*</url-pattern>
         <url-pattern>/secure/jas/*</url-pattern>
     </servlet-mapping>
-
-    <!-- Default session timeout is 30 minutes.  May wish to reduce this. -->
-    <session-config>
-        <session-timeout>30</session-timeout>
-    </session-config>
 </web-app>

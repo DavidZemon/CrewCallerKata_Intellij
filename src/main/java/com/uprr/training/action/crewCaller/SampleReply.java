@@ -1,4 +1,4 @@
-package com.uprr.training.action.sample;
+package com.uprr.training.action.crewCaller;
 
 import com.uprr.netcontrol.shared.components.datetime.NCDateTime;
 import com.uprr.ui.shared.user.ActiveUserId;

@@ -1,4 +1,4 @@
-<html ng-app>
+<html ng-app="crewCaller">
     <head>
         <title>Crew Caller</title>
     </head>
@@ -7,10 +7,35 @@
 
         <p>This is the crew caller!</p>
 
-        <div>
-            <label>Input some sample text here: <input type="text" ng-model="myApplication"></label>
-            <em>{{ myApplication }}</em>
+        <!--<div ng-controller="crewCaller">-->
+            <!--<label>Input some sample text here: <input type="text" ng-model="myPoop"></label>-->
+            <!--<em>{{ myPoop }}</em>-->
+        <!--</div>-->
+
+        <div ng-controller="getAllCrew">
+            <table ng-repeat="crewMember in allCrew">
+                <tr>
+                    <td>{{ crewMember.id }}</td>
+                    <td>{{ crewMember.firstName }}</td>
+                    <td>{{ crewMember.lastName }}</td>
+                    <td>{{ crewMember.phone }}</td>
+                </tr>
+            </table>
         </div>
     </body>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.3.0-beta.3/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.3.0-beta.3/angular-resource.min.js"></script>
+    <script>
+        var crewCallerApp = angular.module("crewCaller", ['ngResource']);
+
+        crewCallerApp.factory("GetAllCrew", function($resource) {
+            return $resource("secure/jas/get/all");
+        })
+
+        crewCallerApp.controller("getAllCrew", function ($scope, GetAllCrew) {
+            GetAllCrew.query(function (data) {
+                $scope.allCrew = data;
+            });
+        });
+    </script>
 </html>

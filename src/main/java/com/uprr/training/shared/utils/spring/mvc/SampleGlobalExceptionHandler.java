@@ -1,7 +1,5 @@
 package com.uprr.training.shared.utils.spring.mvc;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,7 +29,6 @@ import java.util.List;
 
 @ControllerAdvice
 public class SampleGlobalExceptionHandler extends ResponseEntityExceptionHandler {
-    private static final Logger LOG = LoggerFactory.getLogger(SampleGlobalExceptionHandler.class);
 
     @Override
     protected ResponseEntity<Object> handleMissingServletRequestParameter(
@@ -64,7 +61,6 @@ public class SampleGlobalExceptionHandler extends ResponseEntityExceptionHandler
 
     private ResponseEntity<Object> handleException(Exception ex,
                                                    HttpHeaders headers, ErrorMessage errorMessage) {
-        LOG.warn("SampleGlobalExceptionHandler has intercepted an exception", ex);
         headers.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<Object>(errorMessage, headers, HttpStatus.BAD_REQUEST);
     }

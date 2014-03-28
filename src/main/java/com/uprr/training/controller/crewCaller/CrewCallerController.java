@@ -2,8 +2,6 @@ package com.uprr.training.controller.crewCaller;
 
 import com.uprr.training.pojos.CrewMember;
 import com.uprr.training.temp.CrewDao;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -24,8 +22,6 @@ import java.util.List;
  * for any actions supported.
  */
 public class CrewCallerController {
-    private static final Logger LOG = LoggerFactory.getLogger(CrewCallerController.class);
-
     @Autowired
     private CrewDao crewDao;
 
@@ -44,6 +40,7 @@ public class CrewCallerController {
 
     /**
      * Return crew available on a given date
+     *
      * @param date Date requested for the crew
      * @return List of crew members available on that date; Null if none are available
      */
@@ -51,7 +48,6 @@ public class CrewCallerController {
     public
     @ResponseBody
     List<CrewMember> getCrewForDate(@PathVariable("date") Date date) {
-        CrewCallerController.LOG.debug("Received request for crew on given date: " + date.toString());
         return crewDao.getCrewForDate(date);
     }
 }

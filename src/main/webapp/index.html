@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html ng-app="crewCaller">
     <head>
         <title>Crew Caller</title>
@@ -5,21 +6,25 @@
     <body>
         <h1>Crew Caller</h1>
 
-        <p>This is the crew caller!</p>
-
-        <!--<div ng-controller="crewCaller">-->
-            <!--<label>Input some sample text here: <input type="text" ng-model="myPoop"></label>-->
-            <!--<em>{{ myPoop }}</em>-->
-        <!--</div>-->
+        <p>Here's a list of all crew members:</p>
 
         <div ng-controller="getAllCrew">
-            <table ng-repeat="crewMember in allCrew">
-                <tr>
-                    <td>{{ crewMember.id }}</td>
-                    <td>{{ crewMember.firstName }}</td>
-                    <td>{{ crewMember.lastName }}</td>
-                    <td>{{ crewMember.phone }}</td>
-                </tr>
+            <table id="crewTable">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="crewMember in allCrew">
+                        <td>{{ crewMember.firstName }}</td>
+                        <td>{{ crewMember.lastName }}</td>
+                        <td>{{ crewMember.phone }}</td>
+                        <td><input type="button" name="call_{{ crewMember.id }}" value="Call"></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </body>
@@ -28,9 +33,9 @@
     <script>
         var crewCallerApp = angular.module("crewCaller", ['ngResource']);
 
-        crewCallerApp.factory("GetAllCrew", function($resource) {
+        crewCallerApp.factory("GetAllCrew", function ($resource) {
             return $resource("secure/jas/get/all");
-        })
+        });
 
         crewCallerApp.controller("getAllCrew", function ($scope, GetAllCrew) {
             GetAllCrew.query(function (data) {

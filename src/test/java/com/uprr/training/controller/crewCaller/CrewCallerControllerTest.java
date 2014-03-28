@@ -1,7 +1,6 @@
 package com.uprr.training.controller.crewCaller;
 
 import com.uprr.training.controller.AbstractContextControllerTests;
-import com.uprr.ui.shared.user.ActiveUserId;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -31,29 +30,6 @@ public class CrewCallerControllerTest extends AbstractContextControllerTests {
     @Before
     public void setup() {
         this.mockMvc = webAppContextSetup(this.wac).alwaysExpect(status().isOk()).build();
-    }
-
-    @Ignore
-    @Test
-    public void testSampleRequest() throws Exception {
-        this.mockMvc.perform(
-                get("/crewCaller/sampleRequest?track=001&locationCirc7=MX283&yard=01")
-                        .accept(MediaType.APPLICATION_JSON)  //requests a JSON Response
-                        .header(ActiveUserId.SMHEADER_USER, "test999")         //Places a userid on the header for the userid lookup to use
-                        .header(ActiveUserId.SMHEADER_EMPLOYEE_ID, "1234")     //Places a employee Id on the header for the userid lookup to use
-        )
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string(containsString("\"count\":42")))
-                .andExpect(content().string(containsString("\"ping\":\"Pong\"")))
-                .andExpect(content().string(containsString("\"userId\":\"test999\"")))
-                .andExpect(content().string(containsString("\"employeeId\":\"1234\"")))
-                .andExpect(content().string(containsString("\"springAmazing\":true")))
-                .andExpect(content().string(containsString("\"when\":\"2013-12-11T10:09:08Z\"")))
-                .andExpect(content().string(containsString("\"springFacts\":[")))
-                .andExpect(content().string(containsString("{\"factName\":\"fails fast\",\"fact\":true}")))
-                .andExpect(content().string(containsString("{\"factName\":\"testable\",\"fact\":true}")))
-                .andExpect(content().string(containsString("{\"factName\":\"clear\",\"fact\":true}")))
-                .andExpect(content().string(containsString("{\"factName\":\"easy\",\"fact\":false}")));
     }
 
     @Ignore

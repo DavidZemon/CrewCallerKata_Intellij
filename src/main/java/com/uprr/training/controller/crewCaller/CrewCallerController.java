@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/get/*")   //browser URL http://localhost:8080/tng/crewCaller/secure/jas/crewCaller/*
+@RequestMapping("/get/*")   //browser URL http://localhost:8080/tng/crewCaller/secure/jas/get/*
 //Note: requests must all begin /secure/jas (defined the in the web.xml <url-pattern>)
 /**
  * This is the main class handling the all JSON requests for this request map URL.

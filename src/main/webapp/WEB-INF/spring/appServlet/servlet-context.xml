@@ -29,19 +29,6 @@
                 <property name="targetMethod" value="getHostName"/>
             </bean>
         </entry>
-        <entry key="app.initTimestamp">
-            <bean
-                    class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-                <property name="targetObject">
-                    <bean
-                            class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-                        <property name="staticMethod"
-                                  value="com.uprr.netcontrol.shared.components.datetime.NCDateTimeFactory.createTimestamp"/>
-                    </bean>
-                </property>
-                <property name="targetMethod" value="getServiceUTCString"/>
-            </bean>
-        </entry>
     </util:map>
     <bean
             class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -50,20 +37,10 @@
         <property name="locations">
             <list>
                 <value>classpath*:*.properties</value>
-                <value>classpath*:${uprr.implementation.environment}.properties</value>
-                <value>classpath*:*.properties.local</value>
             </list>
         </property>
         <property name="properties" ref="defaultRuntimeSystemProperties"/>
     </bean>
-
-    <!-- SampleGlobalExceptionHandler : translates validation errors into the proper response type
-    	 This class will intercept certain exceptions and format them in a JSON form.
-    -->
-    <bean id="globalExceptionHandler" class="com.uprr.training.shared.utils.spring.mvc.SampleGlobalExceptionHandler"/>
-
-    <!-- Allows the NCDateTime translations in JSON Occur Properly -->
-    <bean id="jacksonObjectMapper" class="com.uprr.training.jackson.SpringMVCJacksonObjectMapper"/>
 
     <!--  declares the class for performing JSON conversions -->
     <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -82,6 +59,7 @@
             </value>
         </property>
     </bean>
+    <beans:bean id="jacksonObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
 
     <!-- Prevents IE and other browsers from caching the data call results.
          This will globally occur for all requests -->
@@ -98,10 +76,6 @@
     <!-- Enables the Spring MVC @Controller programming model -->
     <!--  Probably requires better documentation -->
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
-        <!-- Enables the @ActiveUser tag in Controllers -->
-        <mvc:argument-resolvers>
-            <bean class="com.uprr.ui.shared.user.spring.mvc.ActiveUserHandlerMethodArgumentResolver"/>
-        </mvc:argument-resolvers>
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
             <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>

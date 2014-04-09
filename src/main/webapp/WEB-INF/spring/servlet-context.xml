@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:util="http://www.springframework.org/schema/util"
        xmlns:beans="http://www.springframework.org/schema/beans"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-
-       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-
-    <!--  the Main configuration file for this web application -->
-
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <!-- Dependency injected controllers -->
-    <beans:import resource="classpath:controller/master-controller-context.xml"/>
+    <beans:import resource="classpath:spring/application-context.xml"/>
+
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <!--  Probably requires better documentation -->
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper" ref="jacksonObjectMapper"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <!-- Properties file loader -->
-    <util:map id="defaultRuntimeSystemProperties" map-class="java.util.Properties">
-        <entry key="app.name" value="springmvc-sample-application-1_0"/>
-        <entry key="app.hostname">
-            <bean
-                    class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-                <property name="targetObject">
-                    <bean
-                            class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-                        <property name="staticMethod" value="java.net.InetAddress.getLocalHost"/>
-                    </bean>
-                </property>
-                <property name="targetMethod" value="getHostName"/>
+    <bean id="defaultRuntimeSystemProperties" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject">
+            <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                <property name="staticMethod" value="java.net.InetAddress.getLocalHost"/>
             </bean>
-        </entry>
-    </util:map>
-    <bean
-            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        </property>
+        <property name="targetMethod" value="getHostName"/>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
         <property name="localOverride" value="false"/>
         <property name="locations">
@@ -54,9 +53,7 @@
         <property name="favorParameter" value="false"/>
         <property name="ignoreAcceptHeader" value="false"/>
         <property name="mediaTypes">
-            <value>
-                json=application/json
-            </value>
+            <value>json=application/json</value>
         </property>
     </bean>
     <beans:bean id="jacksonObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
@@ -72,16 +69,4 @@
             <property name="useCacheControlNoStore" value="true"/>
         </bean>
     </mvc:interceptors>
-
-    <!-- Enables the Spring MVC @Controller programming model -->
-    <!--  Probably requires better documentation -->
-    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
-        <mvc:message-converters>
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
-            <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
-            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                <property name="objectMapper" ref="jacksonObjectMapper"/>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>
 </beans>

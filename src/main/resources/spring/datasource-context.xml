@@ -7,8 +7,8 @@
           destroy-method="close">
         <property name="url" value="${jdbc.connection.url}"/>
         <property name="driverClassName" value="${jdbc.connection.driver_class}"/>
-        <!--<property name="username" value="${jdbc.connection.username}"/>-->
-        <!--<property name="password" value="${jdbc.connection.password}"/>-->
+        <property name="username" value="${jdbc.connection.username}"/>
+        <property name="password" value="${jdbc.connection.password}"/>
         <property name="initialSize" value="4"/>
         <property name="defaultAutoCommit" value="false"/>
     </bean>

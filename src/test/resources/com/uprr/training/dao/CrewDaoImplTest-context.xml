@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <!-- this exists so that the test case class will be recognized as a BeanPostProcessor
+        - to turn off things (like the AutoStart property on the JMS listener containers) -->
+    <bean id="postprocessor"
+          class="com.uprr.training.dao.CrewDaoImplTest"/>
+
+    <import resource="classpath:spring/application-context.xml"/>
+</beans>

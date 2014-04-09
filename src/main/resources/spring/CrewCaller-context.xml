@@ -10,6 +10,8 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="crewDao" class="com.uprr.training.dao.CrewDaoImpl"/>
+    <bean id="crewDao" class="com.uprr.training.dao.CrewDaoImpl">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
     <bean id="crewCallerController" class="com.uprr.training.controller.crewCaller.CrewCallerController"/>
 </beans>

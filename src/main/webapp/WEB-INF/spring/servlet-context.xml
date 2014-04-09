@@ -35,7 +35,7 @@
         <property name="localOverride" value="false"/>
         <property name="locations">
             <list>
-                <value>classpath*:*.properties</value>
+                <value>classpath:*.properties</value>
             </list>
         </property>
         <property name="properties" ref="defaultRuntimeSystemProperties"/>

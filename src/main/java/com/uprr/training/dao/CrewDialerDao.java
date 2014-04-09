@@ -1,8 +1,8 @@
-package com.uprr.training.temp;
+package com.uprr.training.dao;
 
 /**
  * @author David Zemon (dczemon)
  */
-public interface CrewDialer {
+public interface CrewDialerDao {
     void callCrewMember(String phoneNumber);
 }

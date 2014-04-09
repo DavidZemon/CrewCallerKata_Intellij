@@ -1,9 +1,9 @@
-package com.uprr.training.temp;
+package com.uprr.training.dao;
 
 /**
  * @author David Zemon (dczemon)
  */
-public class CrewDialerImpl implements CrewDialer {
+public class CrewDialerDaoImpl implements CrewDialerDao {
     @Override
     public void callCrewMember(String phoneNumber) {
 

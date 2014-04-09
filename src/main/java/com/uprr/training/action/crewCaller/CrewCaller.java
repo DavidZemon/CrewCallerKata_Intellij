@@ -1,8 +1,8 @@
 package com.uprr.training.action.crewCaller;
 
+import com.uprr.training.dao.CrewDialerDao;
 import com.uprr.training.pojos.CrewMember;
-import com.uprr.training.temp.CrewDao;
-import com.uprr.training.temp.CrewDialer;
+import com.uprr.training.dao.CrewDao;
 
 import java.util.Date;
 import java.util.List;
@@ -12,20 +12,20 @@ import java.util.List;
  */
 public class CrewCaller {
     private final CrewDao crewDao;
-    private final CrewDialer crewDialer;
+    private final CrewDialerDao crewDialerDao;
 
     /**
      *
      * @param crewDao
-     * @param crewDialer
+     * @param crewDialerDao
      */
-    public CrewCaller(CrewDao crewDao, CrewDialer crewDialer) {
+    public CrewCaller(CrewDao crewDao, CrewDialerDao crewDialerDao) {
         this.crewDao = crewDao;
-        this.crewDialer = crewDialer;
+        this.crewDialerDao = crewDialerDao;
     }
 
     public void callCrew() {
         List<CrewMember> crew = this.crewDao.getCrewForDate(new Date());
-        for (CrewMember crewMember : crew) this.crewDialer.callCrewMember(crewMember.getPhone());
+        for (CrewMember crewMember : crew) this.crewDialerDao.callCrewMember(crewMember.getPhone());
     }
 }

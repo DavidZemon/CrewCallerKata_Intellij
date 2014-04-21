@@ -8,9 +8,9 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.connection.driver_class">org.sqlite.JDBC</prop>
-                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.dialect">com.applerao.hibernatesqlite.dialect.SQLiteDialect</prop>
                 <prop key="hibernate.connection.url">
-                    jdbc:sqlite:C:/Users/igen006/WORK/crewCaller/src/main/resources/crew.db
+                    jdbc:sqlite:E:/Development/tests/CrewCallerKata_Intellij/src/main/resources/crew.db
                 </prop>
                 <prop key="connection.username">${jdbc.connection.username}</prop>
                 <prop key="connection.password">${jdbc.connection.password}</prop>

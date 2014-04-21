@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.uprr.training.pojos.CrewMember" table="CREW" schema="">
+    <class name="com.uprr.training.pojos.CrewMember" table="CREW">
         <id name="id" column="ID"/>
         <property name="firstName" column="FIRST_NAME"/>
         <property name="lastName" column="LAST_NAME"/>

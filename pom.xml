@@ -12,13 +12,13 @@
     <name>Crew Caller</name>
 
     <properties>
-        <app-tla>tng</app-tla>
-        <war-file-name>${app-tla}#${project.artifactId}</war-file-name>
+        <war-file-name>#${project.artifactId}</war-file-name>
         <jackson-version>2.0.5</jackson-version>
         <javax-servlet-version>3.0.1</javax-servlet-version>
         <javax-validation-version>1.0.0.GA</javax-validation-version>
-        <spring-version>3.2.0.RELEASE</spring-version>
-        <slf4j-version>1.5.8</slf4j-version>
+        <spring-version>3.2.8.RELEASE</spring-version>
+        <hibernate-version>3.2.7.ga</hibernate-version>
+        <slf4j-version>1.7.7</slf4j-version>
 
         <junit-version>4.5</junit-version>
         <mockito-version>1.8.5</mockito-version>
@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate</artifactId>
-            <version>3.2.7.ga</version>
+            <version>${hibernate-version}</version>
         </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
@@ -138,7 +138,7 @@
                 <configuration>
                     <webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
                     <webAppConfig>
-                        <contextPath>/${app-tla}/${project.artifactId}</contextPath>
+                        <contextPath>/${project.artifactId}</contextPath>
                         <overrideDescriptor>${basedir}/src/main/webapp/WEB-INF/web.xml</overrideDescriptor>
                     </webAppConfig>
                     <scanIntervalSeconds>1</scanIntervalSeconds>

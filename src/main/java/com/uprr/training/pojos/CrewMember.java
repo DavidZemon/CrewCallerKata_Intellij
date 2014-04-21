@@ -1,5 +1,7 @@
 package com.uprr.training.pojos;
 
+import java.util.Set;
+
 /**
  * Created by igen006 on 3/27/2014.
  */
@@ -8,6 +10,7 @@ public class CrewMember {
     private String firstName;
     private String lastName;
     private String phone;
+    private Set<Dates> dates;
 
     public CrewMember() {
     }
@@ -49,6 +52,14 @@ public class CrewMember {
 
     public void setLastName(final String lastName) {
         this.lastName = lastName;
+    }
+
+    public Set<Dates> getDates() {
+        return dates;
+    }
+
+    public void setDates(Set<Dates> dates) {
+        this.dates = dates;
     }
 
     @Override

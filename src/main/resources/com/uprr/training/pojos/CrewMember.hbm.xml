@@ -8,5 +8,9 @@
         <property name="firstName" column="FIRST_NAME"/>
         <property name="lastName" column="LAST_NAME"/>
         <property name="phone" column="PHONE"/>
+        <set name="dates" table="DATES" lazy="false" cascade="all" fetch="select" inverse="true">
+            <key column="CREW_MEMBER" not-null="true"/>
+            <one-to-many class="com.uprr.training.pojos.Dates"/>
+        </set>
     </class>
 </hibernate-mapping>

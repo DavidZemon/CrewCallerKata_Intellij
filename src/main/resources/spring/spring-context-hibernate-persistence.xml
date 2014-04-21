@@ -18,6 +18,7 @@
         <property name="mappingLocations">
             <list>
                 <value>classpath:com/uprr/training/pojos/CrewMember.hbm.xml</value>
+                <value>classpath:com/uprr/training/pojos/Dates.hbm.xml</value>
             </list>
         </property>
     </bean>

@@ -20,27 +20,6 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <!-- Properties file loader -->
-    <bean id="defaultRuntimeSystemProperties" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetObject">
-            <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-                <property name="staticMethod" value="java.net.InetAddress.getLocalHost"/>
-            </bean>
-        </property>
-        <property name="targetMethod" value="getHostName"/>
-    </bean>
-
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
-        <property name="localOverride" value="false"/>
-        <property name="locations">
-            <list>
-                <value>classpath:*.properties</value>
-            </list>
-        </property>
-        <property name="properties" ref="defaultRuntimeSystemProperties"/>
-    </bean>
-
     <!--  declares the class for performing JSON conversions -->
     <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="objectMapper" ref="jacksonObjectMapper"/>

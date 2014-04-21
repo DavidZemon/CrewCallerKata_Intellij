@@ -7,13 +7,9 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.connection.driver_class">org.sqlite.JDBC</prop>
-                <prop key="hibernate.dialect">com.applerao.hibernatesqlite.dialect.SQLiteDialect</prop>
-                <prop key="hibernate.connection.url">
-                    jdbc:sqlite:E:/Development/tests/CrewCallerKata_Intellij/src/main/resources/crew.db
-                </prop>
-                <prop key="connection.username">${jdbc.connection.username}</prop>
-                <prop key="connection.password">${jdbc.connection.password}</prop>
+                <prop key="hibernate.connection.driver_class">${jdbc.connection.driver_class}</prop>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.connection.url">${jdbc.connection.url}</prop>
 
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>

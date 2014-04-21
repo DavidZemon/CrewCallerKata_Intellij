@@ -6,8 +6,7 @@
 
     <!-- this exists so that the test case class will be recognized as a BeanPostProcessor
         - to turn off things (like the AutoStart property on the JMS listener containers) -->
-    <bean id="postprocessor"
-          class="com.uprr.training.dao.CrewDaoImplTest"/>
+    <bean id="postprocessor" class="com.uprr.training.dao.CrewDaoImplTest"/>
 
     <import resource="classpath:spring/application-context.xml"/>
 </beans>

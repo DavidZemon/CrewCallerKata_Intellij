@@ -12,8 +12,7 @@ public class CrewMember {
     public CrewMember() {
     }
 
-    public CrewMember(int id, String firstName, String lastName, String phone) {
-
+    public CrewMember(final int id, final String firstName, final String lastName, final String phone) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -21,11 +20,10 @@ public class CrewMember {
     }
 
     public String getPhone() {
-
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(final String phone) {
         this.phone = phone;
     }
 
@@ -33,7 +31,7 @@ public class CrewMember {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -41,7 +39,7 @@ public class CrewMember {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
@@ -49,7 +47,31 @@ public class CrewMember {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CrewMember that = (CrewMember) o;
+
+        if (id != that.id) return false;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        return result;
     }
 }

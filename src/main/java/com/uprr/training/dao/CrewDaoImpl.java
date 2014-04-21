@@ -1,7 +1,6 @@
 package com.uprr.training.dao;
 
 import com.uprr.training.pojos.CrewMember;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;

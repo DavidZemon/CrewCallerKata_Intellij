@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by igen006 on 4/9/2014.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration
+@ContextConfiguration(locations = "classpath*:spring/application-context.xml")
 @Transactional
 public class CrewDaoImplTest {
     @Autowired

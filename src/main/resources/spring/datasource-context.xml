@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="url" value="${jdbc.connection.url}"/>
-        <property name="driverClassName" value="${jdbc.connection.driver_class}"/>
+        <property name="url" value="jdbc:sqlite:E:/Development/tests/CrewCallerKata_Intellij/src/main/resources/crew.db"/>
+        <property name="driverClassName" value="org.sqlite.JDBC"/>
         <property name="username" value="${jdbc.connection.username}"/>
         <property name="password" value="${jdbc.connection.password}"/>
         <property name="initialSize" value="4"/>

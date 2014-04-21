@@ -12,14 +12,6 @@ import java.util.List;
  */
 @SuppressWarnings("unchecked")
 public class CrewDaoImpl implements CrewDao {
-    private static List<CrewMember> staticCrewList;
-
-    static {
-        staticCrewList = new ArrayList<CrewMember>();
-        staticCrewList.add(new CrewMember(0, "David", "Zemon", "6363950126"));
-        staticCrewList.add(new CrewMember(1, "Jon", "Doe", "4025550123"));
-        staticCrewList.add(new CrewMember(2, "Carl", "Brooks", "4025442919"));
-    }
 
     private SessionFactory sf;
 
@@ -35,8 +27,7 @@ public class CrewDaoImpl implements CrewDao {
      */
     @Override
     public List<CrewMember> getCrewForDate(Date date) {
-        // TODO: Add real database access
-        return CrewDaoImpl.staticCrewList;
+        return null;
     }
 
     /**

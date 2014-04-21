@@ -2,6 +2,7 @@ package com.uprr.training.dao;
 
 import com.uprr.training.pojos.CrewMember;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * @author David Zemon (dczemon)
  */
+@Transactional
 @SuppressWarnings("unchecked")
 public class CrewDaoImpl implements CrewDao {
 

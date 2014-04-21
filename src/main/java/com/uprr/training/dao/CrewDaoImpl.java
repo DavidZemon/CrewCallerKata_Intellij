@@ -46,7 +46,6 @@ public class CrewDaoImpl implements CrewDao {
      */
     @Override
     public List<CrewMember> getAllCrew() {
-
-        return (List<CrewMember>) sf.getCurrentSession().createQuery("").list();
+        return (List<CrewMember>) sf.getCurrentSession().createQuery("from CrewMember").list();
     }
 }

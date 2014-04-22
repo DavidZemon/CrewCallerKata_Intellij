@@ -6,7 +6,7 @@ package com.uprr.training.pojos;
 public class Dates {
     private int id;
 
-    private String date;
+    private Double date;
 
     public int getId() {
         return id;
@@ -16,11 +16,11 @@ public class Dates {
         this.id = id;
     }
 
-    public String getDate() {
+    public Double getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Double date) {
         this.date = date;
     }
 

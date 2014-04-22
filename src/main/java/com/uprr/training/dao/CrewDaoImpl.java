@@ -1,18 +1,21 @@
 package com.uprr.training.dao;
 
 import com.uprr.training.pojos.CrewMember;
+import com.uprr.training.pojos.Dates;
 import org.hibernate.SessionFactory;
+import org.joda.time.DateTime;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import static org.joda.time.DateTimeUtils.toJulianDayNumber;
 
 /**
  * @author David Zemon (dczemon)
  */
-@Transactional
 @SuppressWarnings("unchecked")
+@Transactional
 public class CrewDaoImpl implements CrewDao {
 
     private SessionFactory sf;
@@ -28,8 +31,19 @@ public class CrewDaoImpl implements CrewDao {
      * @return List of crew members; Null if none available
      */
     @Override
-    public List<CrewMember> getCrewForDate(Date date) {
-        return null;
+    public List<CrewMember> getCrewForDate(DateTime date) {
+        long requestedDate = toJulianDayNumber(date.getMillis());
+        List<CrewMember> validCrew = new ArrayList<CrewMember>();
+
+        List<CrewMember> allCrew = this.getAllCrew();
+        for (CrewMember crewMember : allCrew)
+            for (Dates availableDay : crewMember.getDates())
+                if (availableDay.getDate().longValue() == requestedDate) {
+                    validCrew.add(crewMember);
+                    break;
+                }
+
+        return validCrew;
     }
 
     /**

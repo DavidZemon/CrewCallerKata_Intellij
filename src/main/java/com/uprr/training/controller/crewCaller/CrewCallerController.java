@@ -1,16 +1,16 @@
 package com.uprr.training.controller.crewCaller;
 
-import com.uprr.training.pojos.CrewMember;
 import com.uprr.training.dao.CrewDao;
+import com.uprr.training.pojos.CrewMember;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -44,10 +44,11 @@ public class CrewCallerController {
      * @param date Date requested for the crew
      * @return List of crew members available on that date; Null if none are available
      */
-    @RequestMapping(value = "date/{date}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "date", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public
     @ResponseBody
-    List<CrewMember> getCrewForDate(@PathVariable("date") Date date) {
-        return crewDao.getCrewForDate(date);
+    List<CrewMember> getCrewForDate(@RequestParam("date") long date) {
+        System.out.println("Received!!! " + date);
+        return crewDao.getCrewForDate(new DateTime(date));
     }
 }

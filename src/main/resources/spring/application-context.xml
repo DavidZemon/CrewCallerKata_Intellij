@@ -37,7 +37,5 @@
 
     <beans:import resource="datasource-context.xml"/>
 
-    <beans:import resource="spring-context-hibernate-persistence.xml"/>
-
     <beans:import resource="classpath:/spring/CrewCaller-context.xml"/>
 </beans>

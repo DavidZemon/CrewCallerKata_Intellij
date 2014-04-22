@@ -160,7 +160,7 @@
 
     <profiles>
         <!-- Use this profile if this project is being used outside of Union Pacific Railroad. Those external to UPRR
-             need to add the mirror for Hibernate's SQLite dialect manually. -->
+             need to add the mirror for Hibernate's SQLite dialect and javax.transaction:jta:jar:1.0.1B manually. -->
         <profile>
             <id>external-to-uprr</id>
             <activation>
@@ -170,6 +170,11 @@
                 <repository>
                     <id>hibernatesqlite-maven</id>
                     <url>https://hibernate-sqlite.googlecode.com/svn/trunk/mavenrepo</url>
+                </repository>
+
+                <repository>
+                    <id>java.net</id>
+                    <url>http://download.java.net/maven/2/</url>
                 </repository>
             </repositories>
         </profile>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:beans="http://www.springframework.org/schema/beans"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <!-- Dependency injected controllers -->
-    <beans:import resource="classpath:spring/application-context.xml"/>
+    <import resource="classpath:spring/application-context.xml"/>
 
     <!-- Enables the Spring MVC @Controller programming model -->
     <!--  Probably requires better documentation -->
@@ -35,13 +34,12 @@
             <value>json=application/json</value>
         </property>
     </bean>
-    <beans:bean id="jacksonObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
+    <bean id="jacksonObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
 
     <!-- Prevents IE and other browsers from caching the data call results.
          This will globally occur for all requests -->
     <mvc:interceptors>
-        <bean id="webContentInterceptor"
-              class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+        <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
             <property name="cacheSeconds" value="0"/>
             <property name="useExpiresHeader" value="true"/>
             <property name="useCacheControlHeader" value="true"/>

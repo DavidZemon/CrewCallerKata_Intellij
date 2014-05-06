@@ -24,6 +24,7 @@ public class Dates {
         this.date = date;
     }
 
+    @SuppressWarnings("RedundantIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -6,10 +6,11 @@
          version="2.4">
     <display-name>crewCaller</display-name>
 
-    <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+    <!-- Definition of root spring container shared by all servlets -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring/common.xml</param-value>
+        <!--suppress WebProperties -->
+        <param-value/>
     </context-param>
 
     <!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -25,7 +26,6 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>/WEB-INF/spring/servlet-context.xml</param-value>
         </init-param>
-        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>

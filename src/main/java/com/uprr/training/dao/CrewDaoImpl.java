@@ -18,7 +18,7 @@ import static org.joda.time.DateTimeUtils.toJulianDayNumber;
 @Transactional
 public class CrewDaoImpl implements CrewDao {
 
-    private SessionFactory sf;
+    private final SessionFactory sf;
 
     public CrewDaoImpl(SessionFactory sf) {
         this.sf = sf;

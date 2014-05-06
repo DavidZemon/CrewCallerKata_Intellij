@@ -4,7 +4,6 @@
 	  the development team is able to selectively activate various controllers -->
 
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:beans="http://www.springframework.org/schema/beans"
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -15,27 +14,10 @@
     <context:annotation-config/>
 
     <!-- Properties file loader -->
-    <bean id="defaultRuntimeSystemProperties" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetObject">
-            <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-                <property name="staticMethod" value="java.net.InetAddress.getLocalHost"/>
-            </bean>
-        </property>
-        <property name="targetMethod" value="getHostName"/>
-    </bean>
-
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
-        <property name="localOverride" value="false"/>
-        <property name="locations">
-            <list>
-                <value>classpath*:*.properties</value>
-            </list>
-        </property>
-        <property name="properties" ref="defaultRuntimeSystemProperties"/>
+        <property name="locations" value="classpath:jdbc.properties"/>
     </bean>
 
-    <beans:import resource="datasource-context.xml"/>
-
-    <beans:import resource="classpath:/spring/CrewCaller-context.xml"/>
+    <import resource="datasource-context.xml"/>
+    <import resource="CrewCaller-context.xml"/>
 </beans>

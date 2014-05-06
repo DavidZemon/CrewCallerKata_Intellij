@@ -5,7 +5,6 @@
 <hibernate-mapping>
     <class name="com.uprr.training.pojos.Dates" table="DATES">
         <id name="id" column="ID"/>
-        <!--<many-to-one name="crewMember" column="CREW_MEMBER" class="com.uprr.training.pojos.CrewMember"/>-->
         <property name="date" column="DATE"/>
     </class>
 </hibernate-mapping>

@@ -62,6 +62,7 @@ public class CrewMember {
         this.dates = dates;
     }
 
+    @SuppressWarnings("RedundantIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

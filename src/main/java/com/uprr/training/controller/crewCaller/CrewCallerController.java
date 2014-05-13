@@ -32,7 +32,7 @@ public class CrewCallerController {
     public
     @ResponseBody
     List<CrewMember> getAllCrew() {
-        return crewDao.getAllCrew();
+        return this.crewDao.getAllCrew();
     }
 
     /**
@@ -45,7 +45,6 @@ public class CrewCallerController {
     public
     @ResponseBody
     List<CrewMember> getCrewForDate(@RequestParam("date") long date) {
-        System.out.println("Received!!! " + date);
-        return crewDao.getCrewForDate(new DateTime(date));
+        return this.crewDao.getCrewForDate(new DateTime(date));
     }
 }

@@ -25,6 +25,16 @@ public class CrewDaoImpl implements CrewDao {
     }
 
     /**
+     * Retrieve a list of all active crew members
+     *
+     * @return List of crew members in the database
+     */
+    @Override
+    public List<CrewMember> getAllCrew() {
+        return (List<CrewMember>) sf.getCurrentSession().createQuery("from CrewMember").list();
+    }
+
+    /**
      * Get all available crew members for a given date
      *
      * @param date Date that crew should be available
@@ -44,15 +54,5 @@ public class CrewDaoImpl implements CrewDao {
                 }
 
         return validCrew;
-    }
-
-    /**
-     * Retrieve a list of all active crew members
-     *
-     * @return List of crew members in the database
-     */
-    @Override
-    public List<CrewMember> getAllCrew() {
-        return (List<CrewMember>) sf.getCurrentSession().createQuery("from CrewMember").list();
     }
 }

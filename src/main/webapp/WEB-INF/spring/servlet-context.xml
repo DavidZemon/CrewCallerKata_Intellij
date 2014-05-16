@@ -10,33 +10,15 @@
     <import resource="classpath:spring/application-context.xml"/>
 
     <!-- Enables the Spring MVC @Controller programming model -->
-    <!--  Probably requires better documentation -->
-    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
-        <mvc:message-converters>
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
-            <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
-            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                <property name="objectMapper" ref="jacksonObjectMapper"/>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>
+    <mvc:annotation-driven/>
 
+    <!--  JSON Configuration -->
+    <bean id="jacksonObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
     <!--  declares the class for performing JSON conversions -->
     <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="objectMapper" ref="jacksonObjectMapper"/>
         <property name="supportedMediaTypes" value="application/json"/>
     </bean>
-
-    <!--  JSON Configuration -->
-    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-        <property name="favorPathExtension" value="false"/>
-        <property name="favorParameter" value="false"/>
-        <property name="ignoreAcceptHeader" value="false"/>
-        <property name="mediaTypes">
-            <value>json=application/json</value>
-        </property>
-    </bean>
-    <bean id="jacksonObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
 
     <!-- Prevents IE and other browsers from caching the data call results.
          This will globally occur for all requests -->

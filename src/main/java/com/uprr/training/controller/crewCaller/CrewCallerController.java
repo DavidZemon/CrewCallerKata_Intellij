@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/get/*")
-public class CrewCallerController {
+class CrewCallerController {
     @Autowired
     private CrewDao crewDao;
 

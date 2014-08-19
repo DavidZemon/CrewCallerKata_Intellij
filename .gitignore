@@ -6,3 +6,4 @@
 .classpath
 .springBeans
 *.iml
+atlassian-ide-plugin.xml

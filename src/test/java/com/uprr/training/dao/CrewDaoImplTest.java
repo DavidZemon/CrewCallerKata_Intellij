@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
  * Created by igen006 on 4/9/2014.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring/application-context.xml"})
+@ContextConfiguration(locations = {"classpath:spring/CrewCaller-context.xml"})
 @Transactional
 public class CrewDaoImplTest {
     @Autowired

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns="http://www.springframework.org/schema/beans"
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
     <context:annotation-config/>
 
     <!-- Properties file loader -->
@@ -18,7 +18,7 @@
 
     <!-- We need a DAO bean -->
     <bean id="crewDao" class="com.uprr.training.dao.CrewDaoImpl">
-        <constructor-arg ref="sessionFactory"/>
+        <constructor-arg index="0" ref="sessionFactory"/>
     </bean>
 
     <bean id="crewCallerController" class="com.uprr.training.controller.crewCaller.CrewCallerController"/>

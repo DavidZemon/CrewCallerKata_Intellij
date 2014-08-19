@@ -20,17 +20,17 @@
 
     <!-- Processes application requests -->
     <servlet>
-        <servlet-name>springDispatcherServlet</servlet-name>
+        <servlet-name>crewCallerServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/spring/servlet-context.xml</param-value>
+            <param-value>/WEB-INF/spring/CrewCallerServlet-context.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>springDispatcherServlet</servlet-name>
+        <servlet-name>crewCallerServlet</servlet-name>
         <url-pattern>/secure/jas/*</url-pattern>
     </servlet-mapping>
 </web-app>

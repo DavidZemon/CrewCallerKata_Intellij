@@ -2,8 +2,7 @@ package com.uprr.training.controller.crewCaller;
 
 import com.uprr.training.dao.CrewDao;
 import com.uprr.training.pojos.CrewMember;
-import org.joda.time.DateTime;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.joda.time.LocalDate;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -19,7 +19,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/get/*")
 class CrewCallerController {
-    @Autowired
+    @Inject
     private CrewDao crewDao;
 
     /**
@@ -29,9 +29,8 @@ class CrewCallerController {
      * @return a POJO that will be mapped to become the response JSON data.
      */
     @RequestMapping(value = "all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public
     @ResponseBody
-    List<CrewMember> getAllCrew() {
+    public List<CrewMember> getAllCrew() {
         return this.crewDao.getAllCrew();
     }
 
@@ -42,9 +41,8 @@ class CrewCallerController {
      * @return List of crew members available on that date; Null if none are available
      */
     @RequestMapping(value = "date", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public
     @ResponseBody
-    List<CrewMember> getCrewForDate(@RequestParam("date") long date) {
-        return this.crewDao.getCrewForDate(new DateTime(date));
+    public List<CrewMember> getCrewForDate(@RequestParam("date") long date) {
+        return this.crewDao.getCrewForDate(new LocalDate(date));
     }
 }

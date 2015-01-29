@@ -2,14 +2,14 @@ package com.uprr.training.dao;
 
 import com.uprr.training.pojos.Constants;
 import com.uprr.training.pojos.CrewMember;
-import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.inject.Inject;
 import java.util.List;
 
 import static org.joda.time.DateTimeUtils.fromJulianDay;
@@ -22,8 +22,12 @@ import static org.junit.Assert.assertEquals;
 @ContextConfiguration(locations = {"classpath:spring/CrewCaller-context.xml"})
 @Transactional
 public class CrewDaoImplTest {
-    @Autowired
-    private CrewDao crewDao;
+    private final CrewDao crewDao;
+
+    @Inject
+    public CrewDaoImplTest(CrewDao crewDao) {
+        this.crewDao = crewDao;
+    }
 
     @Test
     public void testGetAllCrew() throws Exception {
@@ -34,7 +38,7 @@ public class CrewDaoImplTest {
 
     @Test
     public void testGetCrewForDate() throws Exception {
-        DateTime testDate = new DateTime(fromJulianDay((double) 2456768));
+        LocalDate testDate = new LocalDate(fromJulianDay((double) 2456768));
 
         List<CrewMember> myList = this.crewDao.getCrewForDate(testDate);
 

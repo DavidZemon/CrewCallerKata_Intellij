@@ -3,9 +3,10 @@ package com.uprr.training.dao;
 import com.uprr.training.pojos.CrewMember;
 import com.uprr.training.pojos.Dates;
 import org.hibernate.SessionFactory;
-import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class CrewDaoImpl implements CrewDao {
 
     private final SessionFactory sf;
 
+    @Inject
     public CrewDaoImpl(SessionFactory sf) {
         this.sf = sf;
     }
@@ -41,11 +43,11 @@ public class CrewDaoImpl implements CrewDao {
      * @return List of crew members; Null if none available
      */
     @Override
-    public List<CrewMember> getCrewForDate(DateTime date) {
-        long requestedDate = toJulianDayNumber(date.getMillis());
-        List<CrewMember> validCrew = new ArrayList<CrewMember>();
+    public List<CrewMember> getCrewForDate(LocalDate date) {
+        long requestedDate = toJulianDayNumber(date.toDate().getTime());
+        final List<CrewMember> validCrew = new ArrayList<>();
 
-        List<CrewMember> allCrew = this.getAllCrew();
+        final List<CrewMember> allCrew = this.getAllCrew();
         for (CrewMember crewMember : allCrew)
             for (Dates availableDay : crewMember.getDates())
                 if (availableDay.getDate().longValue() == requestedDate) {

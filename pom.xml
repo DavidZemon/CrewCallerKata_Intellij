@@ -15,7 +15,7 @@
         <jackson-version>2.0.5</jackson-version>
         <spring-version>3.2.8.RELEASE</spring-version>
 
-        <java-source-version>1.6</java-source-version>
+        <java.version>1.7</java.version>
     </properties>
 
     <dependencies>
@@ -24,11 +24,21 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring-version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+        </dependency>
         <!-- Hibernate Annotations Validation -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate</artifactId>
             <version>3.2.7.ga</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>4.1.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -73,12 +83,17 @@
             <artifactId>joda-time</artifactId>
             <version>2.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.7</version>
+        </dependency>
 
         <!-- Test Dependencies  -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.5</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -107,8 +122,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.0.2</version>
                 <configuration>
-                    <source>${java-source-version}</source>
-                    <target>${java-source-version}</target>
+                    <compilerVersion>${java.version}</compilerVersion>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>

@@ -10,16 +10,14 @@
 
     <!-- Properties file loader -->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations" value="classpath:jdbc.properties"/>
+        <property name="location" value="classpath:jdbc.properties"/>
     </bean>
 
     <!-- Data to create the DAO stuffs-->
-    <import resource="datasource-context.xml"/>
+    <import resource="classpath:spring/datasource-context.xml"/>
 
     <!-- We need a DAO bean -->
-    <bean id="crewDao" class="com.uprr.training.dao.CrewDaoImpl">
-        <constructor-arg index="0" ref="sessionFactory"/>
-    </bean>
+    <bean id="crewDao" class="com.uprr.training.dao.CrewDaoImpl"/>
 
     <bean id="crewCallerController" class="com.uprr.training.controller.crewCaller.CrewCallerController"/>
 </beans>
